@@ -18,7 +18,7 @@ node:
     value: ""
 storageClasses:
 - name: truenas-optane-nfs
-  defaultClass: false
+  defaultClass: true
   reclaimPolicy: Delete
   volumeBindingMode: Immediate
   allowVolumeExpansion: true

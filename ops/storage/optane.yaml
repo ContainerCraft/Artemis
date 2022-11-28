@@ -128,6 +128,7 @@ kind: StorageClass
 metadata:
   name: truenas-optane-nfs
   annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
   labels:
     app.kubernetes.io/name: democratic-csi
     helm.sh/chart: democratic-csi-0.13.5
