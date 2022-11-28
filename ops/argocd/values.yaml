@@ -2,6 +2,7 @@
 # helm upgrade --install argocd argo/argo-cd --create-namespace --namespace argocd --values ./values.yaml
 # helm template argocd argo/argo-cd --create-namespace --namespace argocd --values ./values.yaml > argocd.yaml
 # kubectl kustomize . | kubectl -n argocd apply -f -
+# kubectl get secrets -n argocd -oyaml argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d ; echo
 # kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 ## Argo CD configuration
