@@ -1,5 +1,12 @@
+# Helm add repo:
 # helm repo add democratic-csi https://democratic-csi.github.io/charts/ && helm repo update
+#
+# # Helm Install:
 # helm upgrade --install csi-optane-nfs democratic-csi/democratic-csi --create-namespace --namespace truenas --values optane-nfs.tenant.values.yaml
+#
+# Kustomize install from helm template
+# helm template csi-optane-nfs democratic-csi/democratic-csi --values optane.nfs.values.yaml > optane.yaml
+# kubectl kustomize . | kubectl -n storage apply -f -
 
 csiDriver:
   name: "org.democratic-csi.nfs"
