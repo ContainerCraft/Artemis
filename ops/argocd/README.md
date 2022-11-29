@@ -2,7 +2,7 @@
 
 ### Bootstrap ArgoCD on a cluster
 ```bash
-kubectl kustomize --enable-helm https://github.com/ContainerCraft/k/tree/main/ops/argocd | kubectl -n argocd apply -f -
+kubectl kustomize --enable-helm https://github.com/ContainerCraft/k.git/ops/argocd | kubectl -n argocd apply -f -
 ```
 
 ### Port forward WebUI and decode admin user password
