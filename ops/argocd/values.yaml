@@ -67,6 +67,7 @@ configs:
     server.disable.auth: false          # -- Disable Argo CD RBAC for user authentication
     server.enable.gzip: false           # -- Enable GZIP compression
     server.x.frame.options: sameorigin  # -- Set X-Frame-Options header in HTTP responses to value. To disable, set to "".
+    kustomize.buildOptions: "--enable-helm"
 
   # Provide external cluster credentials
   ## - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters
