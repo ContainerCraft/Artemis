@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: cert-manager
+commonLabels:
+  artemis: cert-manager
+
+resources:
+- namespace.yaml
+
+helmCharts:
+- name: cert-manager
+  releaseName: cert-manager
+  version: v1.10.1
+  repo: https://charts.jetstack.io
+  includeCRDs: true
+# valuesFile: values.yaml
+
+resources:
+- cluster-selfsigned-issuer.yaml
