@@ -10,7 +10,7 @@ helmCharts:
   version: v1.10.1
   repo: https://charts.jetstack.io
   includeCRDs: true
-# valuesFile: values.yaml
+  valuesFile: values.yaml
 
 resources:
 - namespace.yaml
