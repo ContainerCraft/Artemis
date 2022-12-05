@@ -6,10 +6,10 @@ commonLabels:
 
 helmCharts:
 - name: cert-manager
+  includeCRDs: true
   releaseName: cert-manager
   version: v1.10.1
   repo: https://charts.jetstack.io
-  includeCRDs: true
   valuesFile: values.yaml
 
 resources:
