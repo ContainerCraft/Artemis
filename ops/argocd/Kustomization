@@ -6,6 +6,7 @@ commonLabels:
 
 resources:
 - namespace.yaml
+- applicationSet.yaml
 
 helmCharts:
 - name: argo-cd
@@ -14,6 +15,3 @@ helmCharts:
   version: 5.14.2
   repo: https://argoproj.github.io/argo-helm
   includeCRDs: true
-
-resources:
-- applicationSet.yaml
