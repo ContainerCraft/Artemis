@@ -2,6 +2,7 @@
 
 ### Bootstrap ArgoCD on a cluster
 ```bash
+kubectl create namespace argocd
 kubectl kustomize --enable-helm https://github.com/ContainerCraft/k.git/ops/argocd | kubectl -n argocd apply -f -
 ```
 
@@ -10,3 +11,10 @@ kubectl kustomize --enable-helm https://github.com/ContainerCraft/k.git/ops/argo
 kubectl get secrets -n argocd -oyaml argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d ; echo
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
+
+### Open WebUI: 
+
+> username: `admin`
+
+- [localhost:8080](https://localhost:8080)
+
