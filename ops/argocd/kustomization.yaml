@@ -11,6 +11,7 @@ helmCharts:
   valuesFile: values.yaml
   version: 5.14.2
   repo: https://argoproj.github.io/argo-helm
+  includeCRDs: true
 
 resources:
 - applicationSet.yaml
