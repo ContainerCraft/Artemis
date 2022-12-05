@@ -4,9 +4,6 @@ namespace: cert-manager
 commonLabels:
   artemis: cert-manager
 
-resources:
-- namespace.yaml
-
 helmCharts:
 - name: cert-manager
   releaseName: cert-manager
@@ -16,4 +13,5 @@ helmCharts:
 # valuesFile: values.yaml
 
 resources:
+- namespace.yaml
 - cluster-selfsigned-issuer.yaml
