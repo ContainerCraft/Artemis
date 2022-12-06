@@ -15,7 +15,7 @@ spec:
   isCA: true
   issuerRef:
     group: cert-manager.io
-    kind: Issuer
+    kind: ClusterIssuer
     name: cluster-selfsigned-issuer-root
   privateKey:
     algorithm: ECDSA
