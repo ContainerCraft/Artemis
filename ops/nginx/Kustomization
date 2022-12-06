@@ -8,6 +8,7 @@ commonAnnotations:
 
 resources:
 - certificate-internal.yaml
+- ingress.yaml
 
 helmCharts:
 - name: nginx-ingress
