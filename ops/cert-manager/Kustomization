@@ -6,14 +6,16 @@ commonLabels:
 commonAnnotations:
   argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true,Validate=false
 
-helmCharts:
-- name: cert-manager
-  includeCRDs: true
-  releaseName: cert-manager
-  version: v1.10.1
-  repo: https://charts.jetstack.io
-  valuesFile: values.yaml
-
 resources:
 - namespace.yaml
+- https://github.com/cert-manager/cert-manager/releases/download/v1.10.1/cert-manager.yaml
 - cluster-selfsigned-issuer.yaml
+
+#helmCharts:
+#- name: cert-manager
+#  includeCRDs: true
+#  releaseName: cert-manager
+#  version: v1.10.1
+#  repo: https://charts.jetstack.io
+#  valuesFile: values.yaml
+
