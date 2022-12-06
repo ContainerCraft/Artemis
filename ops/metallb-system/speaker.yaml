@@ -1,0 +1,6 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: controller-65dd6d5689
+spec:
+  replicas: 1

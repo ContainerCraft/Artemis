@@ -7,6 +7,7 @@ commonLabels:
 resources:
 - namespace.yaml
 - applicationSet.yaml
+- ingress.yaml
 
 helmCharts:
 - name: argo-cd
