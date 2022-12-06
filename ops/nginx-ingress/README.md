@@ -1,1 +1,0 @@
-# MetalLB Local LoadBalancer Provider

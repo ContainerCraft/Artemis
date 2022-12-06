@@ -2,14 +2,11 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: home.arpa
-  namespace: ingress
 spec:
-  #secretName: home.arpa-letsencrypt-wildcard
   secretName: home.arpa-selfsigned-wildcard
   issuerRef:
-    #name: letsencrypt-prod
-    name: cluster-selfsigned-issuer
     kind: ClusterIssuer
+    name: cluster-selfsigned-issuer
   dnsNames:
   - "home.arpa"
   - "*.home.arpa"
