@@ -1,13 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: cert-manager
 commonLabels:
   artemis: cert-manager
 commonAnnotations:
   argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true,Validate=false
 
 resources:
-- namespace.yaml
 - https://github.com/cert-manager/cert-manager/releases/download/v1.10.1/cert-manager.yaml
 - cluster-selfsigned-issuer.yaml
 

@@ -3,8 +3,6 @@ kind: Kustomization
 namespace: argocd
 commonLabels:
   artemis: argocd
-#commonAnnotations:
-#  argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true,Validate=false
 
 resources:
 - namespace.yaml
