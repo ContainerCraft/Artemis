@@ -4,13 +4,14 @@ namespace: metallb
 commonLabels:
   artemis: metallb
 
-helmCharts:
-- name: metallb
-  releaseName: metallb
-  valuesFile: values.yaml
-  version: 0.13.7
-  repo: https://metallb.github.io/metallb
-  includeCRDs: true
-
 resources:
 - config.yaml
+- github.com/metallb/metallb/config/native?ref=v0.13.7
+
+#helmCharts:
+#- name: metallb
+#  releaseName: metallb
+#  valuesFile: values.yaml
+#  version: 0.13.7
+#  repo: https://metallb.github.io/metallb
+#  includeCRDs: true
