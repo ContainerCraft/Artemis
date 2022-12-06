@@ -20,9 +20,9 @@ spec:
             port:
               name: http
     host: argocd.ops.home.arpa
-# tls:
-# - hosts:
-#   - argocd.ops.home.arpa
+  tls:
+  - hosts:
+    - argocd.ops.home.arpa
 #   secretName: argocd-secret
 ---
 apiVersion: networking.k8s.io/v1
@@ -46,7 +46,7 @@ spec:
             port:
               name: https
     host: grpc.argocd.ops.home.arpa
-# tls:
-# - hosts:
-#   - grpc.argocd.ops.home.arpa
+  tls:
+  - hosts:
+    - grpc.argocd.ops.home.arpa
 #   secretName: argocd-secret
