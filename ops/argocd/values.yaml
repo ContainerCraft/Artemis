@@ -68,6 +68,7 @@ configs:
     server.disable.auth: false          # -- Disable Argo CD RBAC for user authentication
     server.enable.gzip: false           # -- Enable GZIP compression
     server.x.frame.options: sameorigin  # -- Set X-Frame-Options header in HTTP responses to value. To disable, set to "".
+    server.insecure: true               # -- Set argocd run command insecure flag
 
   # Provide external cluster credentials
   ## - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters
@@ -148,20 +149,20 @@ server:
   # TLS certificate configuration via cert-manager
   ## Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#tls-certificates-used-by-argocd-server
   certificate:
-    enabled: false
+    enabled: true
     secretName: argocd-server-tls
-    domain: argocd.example.com
+    domain: argocd.ops.home.arpa
     additionalHosts: []
     issuer:
       # -- Certificate issuer group. Set if using an external issuer. Eg. `cert-manager.io`
       group: ""
       # -- Certificate issuer kind. Either `Issuer` or `ClusterIssuer`
-      kind: ""
+      kind: "ClusterIssuer"
       # -- Certificate isser name. Eg. `letsencrypt`
-      name: ""
+      name: "cluster-selfsigned-issuer"
     # Private key of the certificate
     privateKey:
-      rotationPolicy: Never # -- Rotation policy of private key when certificate is re-issued. Either: `Never` or `Always`
+      rotationPolicy: Always # -- Rotation policy of private key when certificate is re-issued. Either: `Never` or `Always`
   serviceAccount:
     create: true
     name: argocd-server
@@ -169,37 +170,37 @@ server:
     annotations: {}
     automountServiceAccountToken: true
   ingress:
-    enabled: false
-    ingressClassName: ""
+    enabled: true
+    ingressClassName: "default"
     annotations: {}
     labels: {}
     https: false # -- Uses `server.service.servicePortHttps` instead `server.service.servicePortHttp`
     hosts:
-      - argocd.example.com
+      - argocd.ops.home.arpa
     paths:
       - /
     pathType: Prefix
     tls:
-      - secretName: your-certificate-name
+      - secretName: argocd-server-tls
         hosts:
-          - argocd.example.com
+          - argocd.ops.home.arpa
   # gRPC Ingress
   # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/
   ingressGrpc:
-    enabled: false
-    ingressClassName: ""
+    enabled: true
+    ingressClassName: "default"
     annotations: {}
     labels: {}
     https: false # -- Uses `server.service.servicePortHttps` instead `server.service.servicePortHttp`
     hosts:
-      - argocd.example.com
+      - argocd.ops.home.arpa
     paths:
-      - /
+      - /grpc
     pathType: Prefix
     tls:
-      - secretName: your-certificate-name
+      - secretName: argocd-server-tls
         hosts:
-          - argocd.example.com
+          - argocd.ops.home.arpa
   ## Enable if you would like to grant rights to Argo CD to deploy to the local Kubernetes cluster.
   clusterAdminAccess:
     enabled: true
@@ -207,7 +208,7 @@ server:
   ## This function in tech preview stage, do expect unstability or breaking changes in newer versions.
   ## Ref: https://github.com/argoproj-labs/argocd-extensions
   extensions:
-    enabled: false
+    enabled: true
     image:
       tag: "v0.1.0"
       repository: "ghcr.io/argoproj-labs/argocd-extensions"

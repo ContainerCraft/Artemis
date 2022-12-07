@@ -1,6 +1,10 @@
 #  - helm repo add nginx-stable https://helm.nginx.com/stable && helm repo update
 #  - helm upgrade --install nginx-default nginx-stable/nginx-ingress --namespace ingress --create-namespace --values ./values-ingress-internal.yaml
 controller:
+  hostNetwork: true
+  extraArgs:
+    enable-ssl-passthrough: ""
+controller:
   kind: deployment
   nginxplus: false
   nginxReloadTimeout: 60000
@@ -10,9 +14,9 @@ controller:
     ## The entries of the ConfigMap for customizing NGINX configuration.
     entries: {}
   defaultTLS:
-    secret: nginx/home.arpa-selfsigned-wildcard
+    secret: nginx/home-arpa-selfsigned-wildcard
   wildcardTLS:
-    secret: nginx/home.arpa-selfsigned-wildcard
+    secret: nginx/home-arpa-selfsigned-wildcard
   nodeSelector: {}
   terminationGracePeriodSeconds: 30
   resources:
